@@ -9,8 +9,8 @@
     <h3>购物车</h3>
 
   </header>
-  <!-- <Emptycart v-if = '!cars'></Emptycart> -->
-  <Shopcart v-if = '!cars'></Shopcart>  
+  <Emptycart v-if = '!cars'></Emptycart>
+ <Shopcart  v-if = 'cars'></Shopcart>
 
 
   </div>
@@ -21,6 +21,8 @@
 import {Icon} from 'iview'
 import Emptycart from './components/Emptycart'
 import Shopcart from './components/Shopcart'
+// import Shopcart from './components/Shopcart'
+
 export default {
   name: 'Cart',
   components: {

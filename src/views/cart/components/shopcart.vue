@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scope lang='scss'>
-.shopcart {
+.shopcart{
   width: 100%;
   .shop-box {
     h3 {
