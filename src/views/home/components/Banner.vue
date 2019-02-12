@@ -18,6 +18,7 @@
 import { Carousel,CarouselItem } from 'iview'
 import { mapState } from 'vuex'
 export default {
+  
   name: 'Banner',
   data(){
     return {

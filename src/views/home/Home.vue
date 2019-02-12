@@ -45,6 +45,7 @@
     <Video></Video>
     <Active></Active>
     <Main></Main>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -59,6 +60,7 @@ import Brand from './components/Brand'
 import Video from './components/Video'
 import Active from './components/Active'
 import Main from './components/Main'
+import Footer from './components/Footer'
 export default {
   name: "Home",
   data() {
@@ -82,7 +84,8 @@ export default {
     Brand,
     Video,
     Active,
-    Main
+    Main,
+    Footer
   }
 
 };

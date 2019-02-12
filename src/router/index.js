@@ -16,7 +16,16 @@ export default new Router({
     {
       path: '/category',
       name: 'category',
-      component: () => import('@views/category/Category.vue')
+      component: () => import('@views/category/Category.vue'),
+      children: [{
+        name: "ListNav",
+        path: '/category/:id',
+        component: () => import('@views/category/Category.vue')
+      }, {
+        name: "ListContent",
+        path: '/category/:id',
+        component: () => import('@views/category/Category.vue')
+      }]
     },
     {
       path: '/login',
