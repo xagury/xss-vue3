@@ -85,7 +85,7 @@ const actions = {
         }
       })
 
-      .then(res => (console.log(res.data.data), commit(type.GET_MAINNAV, res.data.data)))
+      .then(res => ( commit(type.GET_MAINNAV, res.data.data)))
       .catch(err => console.log(err))
   },
   getMainContent({
@@ -99,7 +99,7 @@ const actions = {
         }
       })
 
-      .then(res => (console.log(res.data.data), commit(type.GET_MAINCONTENT, res.data.data)))
+      .then(res => (commit(type.GET_MAINCONTENT, res.data.data)))
       .catch(err => console.log(err))
   },
 }
