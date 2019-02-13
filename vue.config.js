@@ -19,6 +19,13 @@ module.exports = {
         pathRewrite: {
           '^/ehaier': ''
         }
+      },
+      '/detailEhaier': {
+        target: 'https://detail.ehaier.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/detailEhaier': ''
+        }
       }
     }
   },

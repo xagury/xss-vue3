@@ -29,7 +29,7 @@ const actions = {
         }
       })
 
-      .then(res => (console.log(res.data.data), commit(type.GET_LISTNAV, res.data.data)))
+      .then(res => (commit(type.GET_LISTNAV, res.data.data)))
       .catch(err => console.log(err))
   },
   getListContent({
@@ -42,7 +42,7 @@ const actions = {
         }
       })
 
-      .then(res => (console.log(res.data.data),commit(type.GET_LISTCONTENT, res.data.data)))
+      .then(res => (commit(type.GET_LISTCONTENT, res.data.data)))
       .catch(err => console.log(err))
   },
 }

@@ -13,7 +13,10 @@
         <div class="content-box1">
           <div class="content-box" v-for="item in home.newProductsVo" :key="item.id">
             <div class="content">
+              <a href="/detail">
+              
               <img class="p-img" :src="item.imgUrl" alt>
+              </a>
               <span class="p-name" :data-id="item.productId">{{item.productFullName}}</span>
             </div>
           </div>
