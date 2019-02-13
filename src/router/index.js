@@ -40,7 +40,8 @@ export default new Router({
     {
       path: '/mine',
       name: 'mine',
-      component: () => import('@views/mine/Mine.vue')
+      component: () => import('@views/mine/Mine.vue'),
+     
     },
     {
       path: '/cart',

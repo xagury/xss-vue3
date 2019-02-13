@@ -6,8 +6,10 @@
         <span>客服</span>
       </div>
       <div class="btnicon carIcon">
-        <img src="/img/car2x.png">
-        <span>购物车</span>
+        <Badge :count="5" type="error">
+          <img src="/img/car2x.png">
+          <span>购物车</span>
+        </Badge>
       </div>
       <div class="btnicon like">
         <img src="/img/shoucang@2x.png">
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+import { Badge } from "iview";
 import { mapState } from "vuex";
 export default {
   name: "Footer",
@@ -29,7 +32,7 @@ export default {
   data() {
     return {};
   },
-  components: {}
+  components: { Badge }
 };
 </script>
 <style scope lang='scss'>
@@ -50,6 +53,12 @@ export default {
       height: 0.22rem;
       margin-bottom: 0.06rem;
     }
+    .carIcon {
+      position: relative;
+      img{
+        margin-left:.05rem;
+      }
+    }
   }
   .btn {
     width: 60%;
@@ -62,10 +71,13 @@ export default {
       align-items: center;
       justify-content: center;
     }
-    .buy{
-      background: #FF4400;
-      color:#fff;
+    .buy {
+      background: #ff4400;
+      color: #fff;
     }
+  }
+  /deep/ .ivu-badge {
+    position: static;
   }
 }
 </style>

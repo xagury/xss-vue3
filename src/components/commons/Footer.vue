@@ -46,7 +46,7 @@ export default {
         },
         {
           id: 4,
-          name: "首页",
+          name: "我的",
           url: "/mine",
           img: "img/Mines.png"
         }
