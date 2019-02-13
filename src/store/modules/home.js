@@ -7,7 +7,7 @@ const state = {
   home: [],
   mainnav:[],
   maincontent:[],
-  
+  footerFlag:true
 }
 
 const mutations = {
@@ -25,11 +25,17 @@ const mutations = {
   },
   [type.GET_MAINCONTENT]: (state, payload) => {
     state.maincontent = payload
-  }
+  },
+  [type.FOOTER_FLAG_CHANGE]: (state, payload) => {
+    state.footerFlag = payload
+  },
 
 }
 
 const actions = {
+  [type.FOOTER_FLAG_CHANGE]: ({commit}, payload) => {
+    commit(type.FOOTER_FLAG_CHANGE,payload)
+  },
   getBanner({
     commit
   }) {
@@ -104,8 +110,14 @@ const actions = {
   },
 }
 
+const getters = {
+  footerFlag: (state) => {
+    return state.footerFlag
+  }
+}
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
