@@ -16,9 +16,9 @@
     </header>
     <main>
       <form>
-        <Input placeholder="请输入用户名"/>
-        <Input type="password" placeholder="请输入密码"/>
-        <Button type="primary">注册</Button>
+        <input type='text'  v-model="user.username" placeholder="请输入用户名"/>
+        <input type="password"  v-model="user.password" placeholder="请输入密码"/>
+        <Button type="primary" @click.prevent="handlerRegister">注册</Button>
       </form>
     </main>
   </div>
@@ -28,7 +28,31 @@
 import { Button } from "iview";
 export default {
   name: "Register",
-  components: { Button }
+  data(){
+    return {
+      user:{
+        username: '',
+        password: ''
+      },
+    }
+  },
+  components: { Button },
+  methods:{
+    handlerRegister(){
+ 
+      this.$store.dispatch('register',this.user,()=>{
+        console.log(1111)
+      })
+      // .then(() => {
+        
+      //   // this.$router.push('./login')
+      // })
+      // .catch(err =>{
+        
+      //   console.log(err)
+      // })
+    }
+  }
 };
 </script>
 

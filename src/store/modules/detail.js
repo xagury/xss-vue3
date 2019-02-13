@@ -29,7 +29,7 @@ const actions = {
   getDetail({
     commit
   },id) {
-    axios.get('/detailEhaier/item/purchase/30843.json', {
+    axios.get('/detailEhaier/item/purchase/'+ id +'.json', {
         params: {
           storeId: 33284185
         }
@@ -40,7 +40,7 @@ const actions = {
   },getProduct({
     commit
   },id) {
-    axios.get('/detailEhaier/item/purchase/30843.json', {
+    axios.get('/detailEhaier/item/purchase/'+ id +'.json', {
         params: {
           storeId: 33284185
         }
@@ -55,7 +55,7 @@ const actions = {
     axios.get('/detailEhaier/item/purchase/checkStock.json', {
         params: {
           sku: 'ZRTGH0017',
-          prodId: 30843,
+          prodId: id,
           regionId: 2256,
           number: 1,
           provinceId: 11,
@@ -75,7 +75,7 @@ const actions = {
     axios.get('/detailEhaier/item/purchase/checkStock.json', {
         params: {
           sku: 'ZRTGH0017',
-          prodId: 30843,
+          prodId: id,
           regionId: 2256,
           number: 1,
           provinceId: 11,

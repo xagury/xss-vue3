@@ -30,7 +30,7 @@ export default {
     })
   },
   mounted() {
-    this.$store.dispatch("getMerchant");
+    this.$store.dispatch("getMerchant",this.$route.params.id);
     
   }
 };

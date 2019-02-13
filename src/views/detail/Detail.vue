@@ -3,8 +3,7 @@
     <header>
       <div class="left">
         <a href="/">
-        
-        <Icon type="ios-arrow-back"/>
+          <Icon type="ios-arrow-back"/>
         </a>
       </div>
 
@@ -51,17 +50,44 @@
       </CellGroup>
     </main>
     <footer>
-      <Footer></Footer>
+      <div class="Footer">
+        <div class="iconBtn">
+          <div class="btnicon kf">
+            <img src="/img/ic_kf.png">
+            <span>客服</span>
+          </div>
+          <div class="btnicon carIcon">
+            <router-link
+            to = '/cart'
+            >
+
+            
+            <Badge :count="total.num" type="error">
+              <img src="/img/car2x.png">
+              <span>购物车</span>
+            </Badge>
+            </router-link>
+          </div>
+          <div class="btnicon like">
+            <img src="/img/shoucang@2x.png">
+            <span>收藏</span>
+          </div>
+        </div>
+        <div class="btn">
+          <div class="divbtn join" @click="addCar(product)">加入购物车</div>
+          <div class="divbtn buy" >立即购买</div>
+        </div>
+      </div>
     </footer>
   </div>
 </template>
 
 <script>
-import { Icon, Cell, CellGroup } from "iview";
-import { mapState } from "vuex";
+import { Icon, Cell, CellGroup, Badge } from "iview";
+import { mapState,mapActions,mapGetters } from "vuex";
 import Banner from "./components/Banner";
 import Merchant from "./components/Merchant";
-import Footer from './components/Footer'
+
 export default {
   name: "Detail",
   components: {
@@ -70,7 +96,7 @@ export default {
     Merchant,
     Cell,
     CellGroup,
-    Footer
+    Badge
   },
   computed: {
     ...mapState({
@@ -78,13 +104,17 @@ export default {
       merchant: state => state.detail.merchant,
       product: state => state.detail.product,
       shops: state => state.detail.shops
-    })
+    }),
+     ...mapGetters(["total", "username"])
+  },
+  methods: {
+    ...mapActions(["addCar"])
   },
   mounted() {
-    this.$store.dispatch("getMerchant");
-    this.$store.dispatch("getDetail");
-    this.$store.dispatch("getProduct");
-    this.$store.dispatch("getShops");
+    this.$store.dispatch("getMerchant",this.$route.params.id);
+    this.$store.dispatch("getDetail",this.$route.params.id);
+    this.$store.dispatch("getProduct",this.$route.params.id);
+    this.$store.dispatch("getShops",this.$route.params.id);
   }
 };
 </script>
@@ -112,10 +142,9 @@ export default {
       font-size: 0.3rem;
       line-height: 0.4rem;
       color: #999;
-      a{
+      a {
         color: #999;
       }
-      
     }
     h3 {
       line-height: 0.44rem;
@@ -224,11 +253,58 @@ export default {
       background: #fff;
     }
   }
-  footer{
-    position:fixed;
-    bottom:0;
-    z-index:100001;
-    width:100%;
+  footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 100001;
+    width: 100%;
+    .Footer {
+      background: #fff;
+      height: 0.5rem;
+      width: 100%;
+      display: flex;
+      border-top: 1px solid #eee;
+      .iconBtn {
+        border-right: 1px solid #eee;
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        a{
+          color:#333;
+        }
+        img {
+          width: 0.22rem;
+          height: 0.22rem;
+          margin-bottom: 0.06rem;
+        }
+        .carIcon {
+          position: relative;
+          img {
+            margin-left: 0.05rem;
+          }
+        }
+      }
+      .btn {
+        width: 60%;
+        display: flex;
+        text-align: center;
+        .divbtn {
+          width: 50%;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .buy {
+          background: #ff4400;
+          color: #fff;
+        }
+      }
+      /deep/ .ivu-badge {
+        position: static;
+      }
+    }
   }
 }
 </style>

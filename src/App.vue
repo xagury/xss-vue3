@@ -20,6 +20,13 @@ export default {
   computed: {
     ...mapGetters(['footerFlag'])
   },
+  created(){
+    this.initCar()
+    this.initUser()
+    this.initUsername()
+  },methods: {
+    ...mapActions(['initCar','initUser','initUsername'])
+  },
   watch:{
     $route: {
       handler(){

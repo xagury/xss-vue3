@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 import home from './modules/home'
 import category from './modules/category'
-// import shopcar from './modules/shopcar'
+import cars from './modules/cars'
 import user from './modules/user'
 import detail from './modules/detail'
 
@@ -14,7 +14,7 @@ export default new Vuex.Store({
   modules: {
     home,
     category,
-    // shopcar,
+    cars,
     user,
     detail,
 

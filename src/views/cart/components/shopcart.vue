@@ -3,39 +3,36 @@
     <div class="shop-box">
       <h3>
         总共
-        <span class="numshop">1</span>
+        <span class="numshop">{{total.num}}</span>
         件商品
       </h3>
 
       <ul>
-        <li>
+        <li v-for="(item,index) in cars" :key="index">
           <div class="shop">
             <div class="p-title">
               <div class="select">
                 <i></i>
               </div>
-              <div class="title">自然堂 面部护肤 雪润皙白冰肌水 90ML</div>
+              <div class="title">{{item.productFullName}}</div>
             </div>
             <div class="shopDesc">
               <div class="p-img">
-                <img
-                  src="https://cdn50.ehaier.com/store-manager-web/test/image/2019/01/e4e8fe6499074923a88099b174ceabfa.jpg"
-                  alt
-                >
+                <img :src="item.defaultImageUrl" alt>
               </div>
               <div class="p-desc">
-                <div class="p-name">补水保湿 滋润修护 提亮肤色祛斑</div>
+                <div class="p-name">{{item.productTitle}}</div>
                 <div class="hr"></div>
                 <div class="p-attr">
                   <span>已选</span>
-                  冰肌水90ML
+                  {{item.productName}}
                 </div>
                 <div class="row">
-                  <button class="btn reduce">-</button>
-                  <div class="shopNum">1</div>
-                  <button class="btn add">+</button>
+                  <button class="btn reduce" @click="reduceCar(item)">-</button>
+                  <div class="shopNum">{{item.num}}</div>
+                  <button class="btn add" @click="addCar(item)">+</button>
                 </div>
-                <div class="del">删除</div>
+                <div class="del" @click=" delCar(item) ">删除</div>
               </div>
             </div>
           </div>
@@ -55,7 +52,7 @@
         <div class="total-desc">
           <p class="p-total">
             合计:￥
-            <span class="total">0.00</span>
+            <span class="total">{{total.price}}.00</span>
           </p>
           <p>不含运费</p>
         </div>
@@ -66,23 +63,40 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Shopcart",
-  components: {}
+  props: ["cars"],
+  components: {},
+  methods: {
+    ...mapActions(["addCar", "reduceCar", "delCar"])
+  },
+  computed: {
+    ...mapGetters(["total", "username"])
+  }
 };
 </script>
 
 <style scope lang='scss'>
-.shopcart{
+.shopcart {
   width: 100%;
   .shop-box {
     h3 {
       padding: 0.12rem;
       text-align: left;
       font-size: 0.14rem;
+          vertical-align: baseline;
+    font-family: inherit;
+    outline: 0;
+      
+        box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+
     }
     ul {
       li {
+        margin-bottom:.1rem;
         width: 100%;
         height: 1.85rem;
         background: #fff;
@@ -91,7 +105,8 @@ export default {
             padding: 0.1rem 0.13rem;
             .select {
               position: absolute;
-
+              margin-left: 0.2rem;
+              margin-top: 0.03rem;
               i {
                 width: 28px;
                 height: 28px;
@@ -106,9 +121,15 @@ export default {
               }
             }
             .title {
+              margin-left: 0.58rem;
               font-size: 0.14rem;
               line-height: 0.3rem;
               font-weight: 900;
+              padding: 0rem 0.2rem;
+              width: 2.91333rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
           }
           .shopDesc {
@@ -162,7 +183,7 @@ export default {
                 }
                 .shopNum {
                   flex: 0 0 50%;
-                  font-size:.14rem;
+                  font-size: 0.14rem;
                   line-height: 0.3rem;
                   border-left: 1px solid #eee;
                   border-right: 1px solid #eee;
@@ -221,28 +242,27 @@ export default {
         text-align: left;
         line-height: 0.5rem;
         margin-left: 0.1rem;
-        font-weight:900;
+        font-weight: 900;
       }
     }
     .total-box {
       display: flex;
       align-items: center;
-      .total-desc{
-        margin-right:.1rem;
-        .p-total{
-          font-weight:700;
-          line-height:.2rem;
+      .total-desc {
+        margin-right: 0.1rem;
+        .p-total {
+          font-weight: 700;
+          line-height: 0.2rem;
         }
-        p{
-
+        p {
         }
       }
-      .total-btn{
-            background: #ff7139!important;
-            font-size:.16rem;
-            line-height:.6rem;
-            padding:0 .2rem;
-            color:#fff;
+      .total-btn {
+        background: #ff7139 !important;
+        font-size: 0.16rem;
+        line-height: 0.6rem;
+        padding: 0 0.2rem;
+        color: #fff;
       }
     }
   }
