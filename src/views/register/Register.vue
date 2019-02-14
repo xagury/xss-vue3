@@ -41,16 +41,16 @@ export default {
     handlerRegister(){
  
       this.$store.dispatch('register',this.user,()=>{
-        console.log(1111)
+      
       })
-      // .then(() => {
+      .then(() => {
         
-      //   // this.$router.push('./login')
-      // })
-      // .catch(err =>{
+        // this.$router.push('./login')
+      })
+      .catch(err =>{
         
-      //   console.log(err)
-      // })
+        console.log(err)
+      })
     }
   }
 };

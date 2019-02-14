@@ -13,7 +13,9 @@
         <div class="content-box1">
           <div class="content-box" v-for="item in home.videoActivityVo" :key="item.id">
             <div class="content">
+              <router-link :to="{name: 'detail', params: {id: item.productId}}">
               <img class="p-img" :src="item.videoPicUrl" alt>
+              </router-link>
               <span class="p-name" :data-id="item.productId">{{item.productFullName}}</span>
             </div>
           </div>
@@ -101,7 +103,7 @@ export default {
           transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);
           float: left;
           width: 2.42rem;
-          height: 1.63rem;
+          height: 1.73rem;
           margin-right:.1rem;
           .p-img {
             width: 2.41rem;
@@ -111,6 +113,7 @@ export default {
 
           }
           .p-name {
+            line-height:.3rem;
             padding-left: 5px;
             width: 2rem;
             display: block;

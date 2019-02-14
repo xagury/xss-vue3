@@ -80,23 +80,19 @@ export default {
 <style scope lang='scss'>
 .shopcart {
   width: 100%;
+  padding-bottom:1.1rem;
   .shop-box {
     h3 {
-      padding: 0.12rem;
-      text-align: left;
-      font-size: 0.14rem;
-          vertical-align: baseline;
-    font-family: inherit;
-    outline: 0;
       
-        box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-
+      padding: 0 0.1rem;
+      text-align: left;
+      margin: 0.2rem 0 0.1rem;
+      font-size: 0.14rem;
+      transform: translate3d(0, -50%, 0);
     }
     ul {
       li {
-        margin-bottom:.1rem;
+        margin-bottom: 0.1rem;
         width: 100%;
         height: 1.85rem;
         background: #fff;
@@ -121,9 +117,11 @@ export default {
               }
             }
             .title {
+              transform: translate3d(0, -50%, 0);
               margin-left: 0.58rem;
               font-size: 0.14rem;
-              line-height: 0.3rem;
+              line-height: 0.13rem;
+              margin-top: 0.15rem;
               font-weight: 900;
               padding: 0rem 0.2rem;
               width: 2.91333rem;
@@ -150,21 +148,29 @@ export default {
             .p-desc {
               width: 2.64rem;
               position: relative;
+
               .p-name {
+                margin-top: 0.15rem;
+                transform: translate3d(0, -50%, 0);
+
                 line-height: 0.2rem;
-                height: 0.4rem;
+                height: 0.2rem;
                 font-size: 0.12rem;
                 text-align: left;
               }
               .hr {
                 margin-top: 0.1rem;
                 border-top: 1px solid #eee !important;
-                margin-left: 10px !important;
+                margin-left: 0.01rem;
+
+                transform: translate3d(0, -50%, 0);
                 margin-right: 10px !important;
               }
               .p-attr {
                 margin-top: 0.1rem;
                 text-align: left;
+                margin-top: 0.15rem;
+                transform: translate3d(0, -50%, 0);
               }
               .row {
                 display: flex;

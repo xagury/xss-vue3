@@ -81,6 +81,12 @@ const mutations = {
   [type.LOGIN_USER]: (state, users) => {
     state.users = users
   },
+  [type.LOGIN_USERNAME]: (state, username) => {
+    state.username = username
+  },
+  [type.LOGOUT_USER]: (state, username) => {
+    state.username = username
+  },
 
 }
 
@@ -100,24 +106,36 @@ const actions = {
     },0)
   },
   initUsername({commit}){
-    let users = getUsername();
-    commit(type.LOGIN_USER,users)
+    let usersname = getUsername();
+    commit(type.LOGIN_USERNAME,usersname)
   },
   login({commit},user){
     setTimeout(()=>{
       let users = getUsers();
       let username = getUsername();
-      user.forEach((item,index) =>{
+      users.forEach((item) =>{
         if(item.username === user.username && item.password === user.password){
           username.push(user.username)
           localStorage.username = JSON.stringify(username)
-          commit(type.LOGIN_USER,username)
+          commit(type.LOGIN_USERNAME,username)
         }
       })
       commit(type.LOGIN_USER,users)
     },0)
+  },
+  logout({commit}){
+    let username = getUsername();
+    localStorage.removeItem("username")
+    commit(type.LOGOUT_USER,username)
   }
 }
+
+const getters ={
+  username : (state) =>{
+    return state.username[0]
+  }
+}
+
 
 function getUsers() {
   return JSON.parse(localStorage.users ? localStorage.users : '[]')
@@ -130,5 +148,6 @@ function getUsername() {
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

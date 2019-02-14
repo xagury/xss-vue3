@@ -14,7 +14,12 @@
       </div>
       <div class="userIcon">
         <img src="/img/usericon.jpg" alt>
-        好嗨哟，好炫目,好夺彩,好震撼
+        <span v-show = '!username'>
+          好嗨哟，好炫目,好夺彩,好震撼
+        </span>
+        <span v-show = 'username'>
+          {{username}}
+        </span>
       </div>
     </header>
     <main>
@@ -98,13 +103,17 @@
       </div>
     </main>
     <footer>
-      退出登录
+      <a
+      herf = 'javascript:void(0)'
+      @click = 'logout'
+      >
+      退出登录</a>
     </footer>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState,mapGetters,mapActions } from "vuex";
 import { Icon, Cell, CellGroup } from "iview";
 export default {
   name: "Mine",
@@ -120,7 +129,13 @@ export default {
       order: state => state.user.order,
       fun: state => state.user.fun,
       store: state => state.user.store
-    })
+    }),
+   
+    ...mapGetters(["username"])
+  
+  },
+   methods: {
+    ...mapActions(["logout"])
   },
   mounted() {
     // this.$store.dispatch('getHome')
@@ -320,7 +335,10 @@ export default {
     border-radius: 1.2rem;
     background: #2979FF;
     text-align: center;
-    color: #fff;
+    a{
+      color: #fff;
+    }
+    
     font-size: .14rem;
   }
 }

@@ -43,7 +43,7 @@ export default {
     this.$store.dispatch("getListContent", this.$route.params.id);
   },
   mounted() {
-    this.$store.dispatch("getListContent", this.$route.params.id);
+    this.$store.dispatch("getListContent", 1183);
   },
   methods: {
     ...mapActions(["getListContent"])

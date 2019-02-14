@@ -20,10 +20,15 @@
         <TabPane v-for="item in countdown" :key="item.flashSaleId" :label="item.timeStr">
           <div class="content-box">
             <div class="scroll-box">
-              <div class="content" v-for="item1 in item.products" :key="item1.productId">
+              <div class="content" v-for="item1 in item.products" :key="item1.productId" :data-id='item1.productId'>
+                 <router-link
+              :to="{name: 'detail', params: {id: item1.productId}}"
+              >
+              
                 <div class="p-img">
                   <img :src="item1.imageUrl" alt>
                 </div>
+                 </router-link>
                 <div class="p-name">{{item1.productName}}</div>
                 <div class="p-price">￥{{item1.miniPrice}}</div>
               </div>
@@ -107,7 +112,7 @@ export default {
     .content-box {
       overflow: scroll;
       .scroll-box {
-        width: 350%;
+        width: 600%;
         white-space: nowrap;
 
         .content {

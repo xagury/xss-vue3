@@ -3,7 +3,11 @@
     <header>
       <div class="top">
         <div class="left">
+          <router-link
+          to = '/'
+          >
           <img src="/img/ic_back_white.png" alt>
+          </router-link>
         </div>
         <!-- <span>顺逛用户登录</span> -->
         <div class="right">
@@ -17,10 +21,10 @@
     </header>
     <main>
       <form>
-        <Input placeholder="请输入用户名"/>
-        <Input type="password" placeholder="请输入密码"/>
+        <input placeholder="请输入用户名" v-model="user.username"/>
+        <input type="password" v-model="user.password" placeholder="请输入密码"/>
         <div class="forget">忘记密码?</div>
-        <Button type="primary">登录</Button>
+        <Button type="primary" @click.prevent="handlerLogin">登录</Button>
       </form>
     </main>
   </div>
@@ -30,7 +34,31 @@
 import { Button } from "iview";
 export default {
   name: "Login",
-  components: { Button }
+  components: { Button },
+   data(){
+    return {
+      user:{
+        username: '',
+        password: ''
+      },
+    }
+  },
+  methods:{
+    handlerLogin(){
+ 
+      this.$store.dispatch('login',this.user,()=>{
+      
+      })
+      .then(() => {
+        
+        this.$router.push('./mine')
+      })
+      .catch(err =>{
+        
+        console.log(err)
+      })
+    }
+  }
 };
 </script>
 

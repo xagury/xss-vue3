@@ -13,11 +13,8 @@
         <div class="content-box1">
           <div class="content-box" v-for="item in home.newProductsVo" :key="item.id">
             <div class="content">
-              <router-link
-              :to="{name: 'detail', params: {id: item.productId}}"
-              >
-              
-              <img class="p-img" :src="item.imgUrl" alt>
+              <router-link :to="{name: 'detail', params: {id: item.productId}}">
+                <img class="p-img" :src="item.imgUrl" alt>
               </router-link>
               <span class="p-name" :data-id="item.productId">{{item.productFullName}}</span>
             </div>
@@ -29,7 +26,6 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 
 export default {
@@ -45,7 +41,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getHome");
-
   }
 };
 </script>
@@ -59,7 +54,7 @@ export default {
   .title {
     overflow: hidden;
     margin: 0.1rem;
-  
+
     border-bottom: 1px solid #eaeaea;
     .icon {
       width: 0.17rem;
@@ -97,38 +92,35 @@ export default {
   }
   .wrap {
     overflow: scroll;
-    padding:.1rem;
+    padding: 0.1rem;
     .content-box1 {
       width: 1200%;
-       .content-box {
- 
-    
-      .content {
-        box-shadow: rgb(238, 238, 238) 1px 2px 2px 1px;
-   width: 2.15rem;
-    transition-duration: 0ms;
-    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);
-        float:left;
-        width: 2.15rem;
-        height: 2.4rem;
-        .p-img {
-          width: 2.05rem;
-          height: 2.05rem;
-          display: block;
-          margin: 0 auto;
-        }
-        .p-name {
-          padding-left: 5px;
-          width: 2rem;
-          display: block;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+      .content-box {
+        .content {
+          box-shadow: rgb(238, 238, 238) 1px 2px 2px 1px;
+          width: 2.15rem;
+          transition-duration: 0ms;
+          transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);
+          float: left;
+          width: 2.15rem;
+          height: 2.4rem;
+          .p-img {
+            width: 2.05rem;
+            height: 2.05rem;
+            display: block;
+            margin: 0 auto;
+          }
+          .p-name {
+            padding-left: 5px;
+            width: 2rem;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
         }
       }
     }
-    }
-   
   }
 }
 </style>

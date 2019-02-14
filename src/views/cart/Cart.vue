@@ -49,6 +49,7 @@ export default {
     width: 100%;
     position: fixed;
     top: 0;
+    z-index:1000001;
     border-color: #b2b2b2;
     background-color: #f8f8f8;
     color: #444;
